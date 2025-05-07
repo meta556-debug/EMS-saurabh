@@ -2,7 +2,7 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://ems-saurabh.onrender.com/api",
   withCredentials: true,
 })
 
@@ -35,17 +35,17 @@ export const leavesAPI = {
   updateLeaveStatus: (id, status) => api.put(`/leaves/${id}`, { status }),
 }
 
-// // Task-related helpers
-// export const tasksAPI = {
-//   getAllTasks: () => api.get("/tasks"),
-//   getEmployeeTasks: (employeeId) => api.get(`/tasks/${employeeId}`),
-//   createTask: (data) => api.post("/tasks", data),
-//   updateTaskStatus: (id, status) => api.put(`/tasks/${id}/status`, { status }),
-//   deleteTask: (id) => api.delete(`/tasks/${id}`),
-//   startTaskTimer: (taskId) => api.post(`/tasks/${taskId}/timer/start`),
-//   stopTaskTimer: (taskId) => api.post(`/tasks/${taskId}/timer/stop`),
-//   getTaskTimerHistory: (taskId) => api.get(`/tasks/${taskId}/timer/history`),
-// }
+// Task-related helpers
+export const tasksAPI = {
+  getAllTasks: () => api.get("/tasks"),
+  getEmployeeTasks: (employeeId) => api.get(`/tasks/${employeeId}`),
+  createTask: (data) => api.post("/tasks", data),
+  updateTaskStatus: (id, status) => api.put(`/tasks/${id}/status`, { status }),
+  deleteTask: (id) => api.delete(`/tasks/${id}`),
+  startTaskTimer: (taskId) => api.post(`/tasks/${taskId}/timer/start`),
+  stopTaskTimer: (taskId) => api.post(`/tasks/${taskId}/timer/stop`),
+  getTaskTimerHistory: (taskId) => api.get(`/tasks/${taskId}/timer/history`),
+}
 
 // Get today's attendance status for an employee or all employees for managers
 export const getTodayStatus = async (employeeId) => {
