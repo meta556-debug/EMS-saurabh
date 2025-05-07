@@ -33,14 +33,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // ✅ 3. Sessions
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "yoursecret",
+    secret: process.env.SESSION_SECRET || "685b6928b4455eae5c9aadf000d6670231ff9bba33101c11f2fe010ac7e7adeedc6e0701e12612e689ec10f86d483e23d356633167aa36925c1ec63c51f4eb89",
     resave: false,
     saveUninitialized: false,
     cookie: {
       secure: false, // true in production with https
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      sameSite: "lax",
+      sameSite: "none",
     },
   }),
 )
@@ -63,7 +63,7 @@ app.use("/api/tasks", tasksRoutes)
 createTables()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`)
+      console.log(`Server running on https://ems-saurabh-1.onrender.com/`)
     })
   })
   .catch((err) => {
