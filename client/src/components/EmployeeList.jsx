@@ -18,7 +18,7 @@ function EmployeeList() {
   const fetchEmployees = async () => {
     try {
       setLoading(true)
-      const res = await axios.get("http://localhost:5000/api/employees", { withCredentials: true })
+      const res = await axios.get("https://ems-saurabh.onrender.com/api/employees", { withCredentials: true })
       setEmployees(res.data)
       setError("")
     } catch (err) {
@@ -36,7 +36,7 @@ function EmployeeList() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this employee?")) return
     try {
-      await axios.delete(`http://localhost:5000/api/employees/${id}`, { withCredentials: true })
+      await axios.delete(`https://ems-saurabh.onrender.com/api/employees/${id}`, { withCredentials: true })
       setEmployees((prev) => prev.filter((emp) => emp.id !== id))
       setSuccessMessage("Employee deleted successfully.")
     } catch (err) {
@@ -59,12 +59,12 @@ function EmployeeList() {
   const handleFormSubmit = async (employeeData) => {
     try {
       if (editEmployee) {
-        await axios.put(`http://localhost:5000/api/employees/${editEmployee.id}`, employeeData, {
+        await axios.put(`https://ems-saurabh.onrender.com/api/employees/${editEmployee.id}`, employeeData, {
           withCredentials: true,
         })
         setSuccessMessage("Employee details updated successfully.")
       } else {
-        await axios.post("http://localhost:5000/api/employees", employeeData, { withCredentials: true })
+        await axios.post("https://ems-saurabh.onrender.com/api/employees", employeeData, { withCredentials: true })
         setSuccessMessage("Employee added successfully.")
       }
       handleFormClose()
